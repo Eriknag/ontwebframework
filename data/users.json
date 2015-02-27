@@ -1,0 +1,26 @@
+{
+    "admin": {
+        "username": "admin",
+        "firstname": "Admin",
+        "lastname": "de Superuser",
+        "email": "admin@mail.com",
+        "telephone": "06-12345678",
+        "password": "1234"
+    },
+    "test": {
+        "username": "test",
+        "firstname": "Wim",
+        "lastname": "de Slevelaar",
+        "email": "slevel@wigbek.zwm",
+        "telephone": "12345452",
+        "password": "12345"
+    },
+    "dwaard": {
+        "username": "dwaard",
+        "firstname": "Daan",
+        "lastname": "de Waard",
+        "email": "daanwaard@gmail.com",
+        "telephone": "06-23016807",
+        "password": "Trustno1"
+    }
+}
