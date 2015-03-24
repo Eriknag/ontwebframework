@@ -15,16 +15,16 @@
 		public function readUsers() {
 			$res = $this->site->mysqli->query("SELECT * FROM USER ORDER BY Name_last");
 			$result = Array();
-			while ($row = $res->fetch_assoc()) {
+			while ($res && ($row = $res->fetch_assoc()) !== null) {
 			    $result[] = $this->buildUserFromArray($row);
 			}
 			return $result;		
 		}
 		
-		public function findUser($userid) {
-			$sql = "SELECT * FROM USER WHERE Userid='$userid'";
+		public function findUser($username) {
+			$sql = "SELECT * FROM user WHERE username='$username'";
 			$res = $this->site->mysqli->query($sql);
-			if($row = $res->fetch_assoc()) {
+			if($res && ($row = $res->fetch_assoc()) !== null) {
 				return $this->buildUserFromArray($row);
 			}
 			return null;		
@@ -32,25 +32,25 @@
 		
 		private function buildUserFromArray($row) {
 			$user = new stdClass();
-			$user->userid = "";
+			$user->username = "";
 			$user->firstname = "";
 			$user->lastname = "";
 			$user->email = "";
 			$user->telephone = "";
 			$user->password = "";
 			if (isset($row)) {
-				$user->userid = $row['Userid'];
-				$user->firstname = $row['Name_first'];
-				$user->lastname = $row['Name_last'];
-				$user->email = $row['Email'];
-				$user->telephone = $row['Telephone'];
-				$user->password = $row['Password'];
+				$user->username = $row['username'];
+				$user->firstname = $row['firstname'];
+				$user->lastname = $row['lastname'];
+				$user->email = $row['email'];
+				$user->telephone = $row['telephone'];
+				$user->password = $row['password'];
 			}
 			return $user;
 		}
 		
-		public function setCurrentUser($userid) {
-			$this->currentUser = $this->findUser($userid);
+		public function setCurrentUser($username) {
+			$this->currentUser = $this->findUser($username);
 		}
     	
 		/**
@@ -58,8 +58,8 @@
 		 * @param de te controleren usernaam
 		 * @return true als de opgegeven gebruikersnaam al bestaat
 		 */
-		public function useridExists($userid) {
-			return $this->findUser($userid)!=null;	 	
+		public function usernameExists($username) {
+			return $this->findUser($username)!=null;	 	
 		}
 		
     	/**
@@ -75,14 +75,14 @@
 				return;
 			}
     		/* Prepared statement, stage 1: prepare */
-			$sql = "INSERT INTO USER(Userid, Password, Name_first, Name_last, Email, Telephone) VALUES (?, ?, ?, ?, ?, ?)";
+			$sql = "INSERT INTO USER(username, Password, Name_first, Name_last, Email, Telephone) VALUES (?, ?, ?, ?, ?, ?)";
 			if (!($stmt = $this->site->mysqli->prepare($sql))) {
 			    $this->site->error = "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 				return;
 			}
 			/* Prepared statement, stage 2: bind and execute */
 			$hash = crypt($newuser->password, 'fietsbel');
-    		if (!$stmt->bind_param("ssssss", $newuser->userid, 
+    		if (!$stmt->bind_param("ssssss", $newuser->username, 
     										 $hash, 
     										 $newuser->firstname, 
     										 $newuser->lastname, 
@@ -107,7 +107,7 @@
 		 */
     	public function update() {
    			$updateduser = $this->buildUserdataFromPOST(false);
-			$sql = "UPDATE USER SET Name_first=?, Name_last=?, Email=?, Telephone=? WHERE Userid=?";
+			$sql = "UPDATE USER SET Name_first=?, Name_last=?, Email=?, Telephone=? WHERE username=?";
     		/* Prepared statement, stage 1: prepare */
 			if (!($stmt = $this->site->mysqli->prepare($sql))) {
 			    $this->site->error = "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
@@ -118,7 +118,7 @@
     										$updateduser->lastname, 
     										$updateduser->email, 
     										$updateduser->telephone, 
-    										$updateduser->userid)) 
+    										$updateduser->username)) 
 			{
 			    $this->site->error = "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 				return;
@@ -139,20 +139,20 @@
 		 */
     	public function delete() {
 			// STAP 1 request controleren
-		    if(!isset($_POST['userid_list'])) {
+		    if(!isset($_POST['username_list'])) {
 		        return 'Het lijkt er op dat het formulier dat u gebruikt niet klopt.';       
 		    } else {
-		    	$sql = "DELETE FROM User WHERE Userid = ?";
-				$userids = explode(',', $_POST['userid_list']);
+		    	$sql = "DELETE FROM User WHERE username = ?";
+				$usernames = explode(',', $_POST['username_list']);
 	    		/* Prepared statement, stage 1: prepare */
 				if (!($stmt = $this->site->mysqli->prepare($sql))) {
 				    $this->site->error = "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 					return;
 				}
-				foreach($userids as $userid) {
-					if ($this->useridExists($userid)) {
+				foreach($usernames as $username) {
+					if ($this->usernameExists($username)) {
 						/* Prepared statement, stage 2: bind and execute */
-			    		if (!$stmt->bind_param("s", $userid)) 
+			    		if (!$stmt->bind_param("s", $username)) 
 						{
 						    $this->site->error = "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 							return;
@@ -175,7 +175,7 @@
 		 */
 		private function buildUserdataFromPOST($isNew) {
 			// STAP 1 request controleren
-		    if(!isset($_POST['userid']) ||
+		    if(!isset($_POST['username']) ||
 		        !isset($_POST['first_name']) ||
 		        !isset($_POST['last_name']) ||
 		        !isset($_POST['email']) ||
@@ -187,7 +187,7 @@
 				
 			// STAP 2 object bouwen uit requestdata
 			$user = new stdClass();
-			$user->userid = $_POST['userid'];
+			$user->username = $_POST['username'];
 			$user->firstname = $_POST['first_name'];
 			$user->lastname = $_POST['last_name'];
 			$user->email = $_POST['email'];
@@ -197,9 +197,9 @@
 			// STAP 3 valideren
 		 	// Valideer input
 		    $error_message = "";
-			$error_message .= validateCharacters($user->userid, 'De usernaam is niet valide.');
+			$error_message .= validateCharacters($user->username, 'De usernaam is niet valide.');
 			// Extra validatie: kijk of usernaam al bestaat, alleen bij insert
-			if($isNew && $this->useridExists($user->userid)) {
+			if($isNew && $this->usernameExists($user->username)) {
 				$error_message .= 'De usernaam bestaat al.<br />';
 			}			
 			$error_message .= validateCharacters($user->firstname, 'De voornaam is niet valide.');

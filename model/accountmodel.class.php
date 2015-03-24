@@ -32,7 +32,7 @@ require_once('usersmodel.class.php');
 					$_SESSION['loggedin'] = true;
 					$_SESSION['username'] = $username;
 					return true;
-				}
+				}return $user;
 			}
 			return false;
 		}

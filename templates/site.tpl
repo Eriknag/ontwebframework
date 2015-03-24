@@ -44,9 +44,9 @@
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
-		      	<li {if $site->page=='about.php'}class="active"{/if}><a href="about.php">Over ons</a></li>
-		      	<li {if $site->page=='game.php'}class="active"{/if}><a href="game.php">Game corner</a></li>
-		      	<li {if $site->page=='contact.php'}class="active"{/if}><a href="contact.php">Contact</a></li>
+		      	<li {if $site->page=='about.php'}class="active"{/if}><a href="?page=about">Over ons</a></li>
+		      	<li {if $site->page=='game.php'}class="active"{/if}><a href="?page=game">Game corner</a></li>
+		      	<li {if $site->page=='contact.php'}class="active"{/if}><a href="?page=contact">Contact</a></li>
 		      	{if $site->isLoggedin()}
 		      	{/if}
 		      </ul>
@@ -55,21 +55,21 @@
 					    <li class="dropdown">
 					        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{$site->account->getAuthenticatedUsername()} <span class="caret"></span></a>
 					        <ul class="dropdown-menu" role="menu">
-					      		<li><a href="usermgmt.php">Gebruikersbeheer</a></li>
-					      		<li><a href="competitiemgmt.php">Competitiebeheer</a></li>
+					      		<li><a href="?page=usermgmt">Gebruikersbeheer</a></li>
+					      		<li><a href="?page=competitiemgmt">Competitiebeheer</a></li>
 						        <li class="divider"></li>
 						        <li><a id="profile" href="#">Profiel</a></li>
 						        <li class="divider"></li>
-						        <li><a href="login.php?action=logoff">Afmelden</a></li>
+						        <li><a href="?page=login?action=logoff">Afmelden</a></li>
 					        </ul>
 				    {else}
 						 <!-- <li><a id="login" href="#">Log in</a></li> -->
 				          <li class="dropdown" id="menuLogin">
 				            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
 				            <div class="dropdown-menu" style="width:300px; padding:17px;">
-				              <form class="form" id="formLogin" role="form" action="login.php"  method="post"> 
+				              <form class="form" id="formLogin" role="form" action="?page=login"  method="post"> 
 										 <label>Login</label>
-										 <input  type="text" class="form-control" name="userid" placeholder="Gerbuikersnaam"/>
+										 <input  type="text" class="form-control" name="username" placeholder="Gerbuikersnaam"/>
 										 <input  type="password" class="form-control" name="passwd" placeholder="Wachtwoord"/>
 										 <br/>
 				        		<button type="submit" class="btn btn-primary">Inloggen</button>
@@ -117,8 +117,8 @@
 						</div>
 		  				<div class="modal-body">
 							<div class="form-group">
-								 <label class="control-label" for="userid">Gebruikersnaam</label>
-								 <input  type="text" class="form-control" name="userid"/>
+								 <label class="control-label" for="username">Gebruikersnaam</label>
+								 <input  type="text" class="form-control" name="username"/>
 							</div>		 
 							<div class="form-group">
 								 <label class="control-label" for="passwd">Wachtwoord</label>

@@ -1,6 +1,6 @@
 <?php
 require_once('accountmodel.class.php');
-include_once('db.php'); 
+include_once('model/db.php'); //wordt niet correct geladen met relative path
 
 /**
  * Deze klasse is verantwoordelijk voor de data die voor de hele site nodig is.
