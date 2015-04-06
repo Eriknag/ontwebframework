@@ -13,7 +13,7 @@
 		}
 		
 		public function readUsers() {
-			$res = $this->site->mysqli->query("SELECT * FROM USER ORDER BY Name_last");
+			$res = $this->site->mysqli->query("SELECT * FROM user ORDER BY lastname");
 			$result = Array();
 			while ($res && ($row = $res->fetch_assoc()) !== null) {
 			    $result[] = $this->buildUserFromArray($row);
@@ -75,7 +75,7 @@
 				return;
 			}
     		/* Prepared statement, stage 1: prepare */
-			$sql = "INSERT INTO USER(username, Password, Name_first, Name_last, Email, Telephone) VALUES (?, ?, ?, ?, ?, ?)";
+			$sql = "INSERT INTO USER(username, firstname, lastname, email, telephone, password) VALUES (?, ?, ?, ?, ?, ?)";
 			if (!($stmt = $this->site->mysqli->prepare($sql))) {
 			    $this->site->error = "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 				return;
@@ -83,11 +83,11 @@
 			/* Prepared statement, stage 2: bind and execute */
 			$hash = crypt($newuser->password, 'fietsbel');
     		if (!$stmt->bind_param("ssssss", $newuser->username, 
-    										 $hash, 
     										 $newuser->firstname, 
     										 $newuser->lastname, 
     										 $newuser->email, 
-    										 $newuser->telephone)) 
+    										 $newuser->telephone,
+											 $hash	)) 
 			{
 			    $this->site->error = "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 				return;
@@ -107,7 +107,7 @@
 		 */
     	public function update() {
    			$updateduser = $this->buildUserdataFromPOST(false);
-			$sql = "UPDATE USER SET Name_first=?, Name_last=?, Email=?, Telephone=? WHERE username=?";
+			$sql = "UPDATE USER SET firstname=?, lastname=?, email=?, telephone=? WHERE username=?";
     		/* Prepared statement, stage 1: prepare */
 			if (!($stmt = $this->site->mysqli->prepare($sql))) {
 			    $this->site->error = "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
@@ -176,8 +176,8 @@
 		private function buildUserdataFromPOST($isNew) {
 			// STAP 1 request controleren
 		    if(!isset($_POST['username']) ||
-		        !isset($_POST['first_name']) ||
-		        !isset($_POST['last_name']) ||
+		        !isset($_POST['firstname']) ||
+		        !isset($_POST['lastname']) ||
 		        !isset($_POST['email']) ||
 		        !isset($_POST['telephone']) ||
 		        !isset($_POST['password'])) {
@@ -188,8 +188,8 @@
 			// STAP 2 object bouwen uit requestdata
 			$user = new stdClass();
 			$user->username = $_POST['username'];
-			$user->firstname = $_POST['first_name'];
-			$user->lastname = $_POST['last_name'];
+			$user->firstname = $_POST['firstname'];
+			$user->lastname = $_POST['lastname'];
 			$user->email = $_POST['email'];
 			$user->telephone = $_POST['telephone'];
 			$user->password = $_POST['password'];

@@ -1,35 +1,35 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-24 21:21:26
-         compiled from ".\templates\index.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:5435511c746638403-95803924%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-06 23:19:49
+         compiled from "templates\index.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:272075522efeead3069-51972912%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '180e6dc3c90bfb3f9d482c770aa9c1f8f355e653' => 
     array (
-      0 => '.\\templates\\index.tpl',
-      1 => 1426430775,
+      0 => 'templates\\index.tpl',
+      1 => 1428001895,
       2 => 'file',
     ),
     'd024ab6e9f1546a956d8b3e5784904d86d5a99b0' => 
     array (
       0 => '.\\templates\\site.tpl',
-      1 => 1427144804,
+      1 => 1428355185,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '5435511c746638403-95803924',
+  'nocache_hash' => '272075522efeead3069-51972912',
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_5522efeeb1aa29_47895191',
   'variables' => 
   array (
     'site' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5511c74667b8a1_02734843',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5511c74667b8a1_02734843')) {function content_5511c74667b8a1_02734843($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_5522efeeb1aa29_47895191')) {function content_5522efeeb1aa29_47895191($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -69,16 +69,22 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="index.php">DBSTest</a>
+		      <a class="navbar-brand" href="/">Ontweb</a>
 		    </div>
 		
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
-		      	<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='about.php') {?>class="active"<?php }?>><a href="?page=about">Over ons</a></li>
-		      	<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='game.php') {?>class="active"<?php }?>><a href="?page=game">Game corner</a></li>
-		      	<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='contact.php') {?>class="active"<?php }?>><a href="?page=contact">Contact</a></li>
 		      	<?php if ($_smarty_tpl->tpl_vars['site']->value->isLoggedin()) {?>
+				<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='gebruikersbeheer') {?>class="active"<?php }?>><a href="?page=gebruikersbeheer">Gebruikersbeheer</a></li>
+		      	<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='database') {?>class="active"<?php }?>><a href="?page=database">Database</a></li>
+		      	<li class="dropdown">
+		      		<a href="#" class="dropdown-toggle" data-toggle="dropdown">My Module</a>
+		      		<ul class="dropdown-menu" role="menu">
+		      			<li><a id="page1" href="?module=my_module&page=page1">Page 1</a>
+		      			<li><a id="page2" href="?module=my_module&page=page2">Page 2</a>
+		      		</ul>
+		      	</li>
 		      	<?php }?>
 		      </ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -87,12 +93,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_smarty_tpl->tpl_vars['site']->value->account->getAuthenticatedUsername();?>
  <span class="caret"></span></a>
 					        <ul class="dropdown-menu" role="menu">
-					      		<li><a href="?page=usermgmt">Gebruikersbeheer</a></li>
-					      		<li><a href="?page=competitiemgmt">Competitiebeheer</a></li>
-						        <li class="divider"></li>
 						        <li><a id="profile" href="#">Profiel</a></li>
-						        <li class="divider"></li>
-						        <li><a href="?page=login?action=logoff">Afmelden</a></li>
+						        <li><a href="?page=login&action=logoff">Afmelden</a></li>
 					        </ul>
 				    <?php } else { ?>
 						 <!-- <li><a id="login" href="#">Log in</a></li> -->
@@ -136,6 +138,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<?php }?>
 		
 		
+	<?php if ($_smarty_tpl->tpl_vars['site']->value->hasErrors()) {?>
+	<?php }?>
 	<h1>Welkom</h1>
 	<p>Hier komt een library waarmee 1e jaars studenten ONTWEB een webapplicatie kunnen ontwikkelen
 	</p>

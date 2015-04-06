@@ -1,10 +1,4 @@
 <?php
-//Sessie starten zodat het login systeem werkt 
-//session_start();
-	// Sitemodel altijd laden
-//include('ontweb/model/sitemodel.class.php');
-//$site = new SiteModel();
-
 // controleer of uitloggen
 if (isset($_GET['action']) && $_GET['action']==='logoff') {
 	$site->account->unauthenticateUser();
@@ -24,9 +18,4 @@ if (isset($_GET['action']) && $_GET['action']==='logoff') {
 	}
 }
 
-// Smarty object laden
-//require_once('../lib/Smarty-3.1.18/libs/Smarty.class.php');
-//$smarty = new Smarty;
-
-//$smarty->assign('site', $site);
-//$smarty->display('templates/index.tpl');
+$smarty->display("templates/index.tpl");

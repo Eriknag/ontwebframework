@@ -9,12 +9,6 @@
 require_once('model/usersmodel.class.php');
 $model = new UsersModel($site);
 $smarty->assign('model', $model);
-
-/*
- * Aauthorisatie (mag deze pagina worden geopend?)	
- */
-session_start(); 
-// Nothing TO DO	
 	
 /**
  * Afhankelijk van de toestand nu de juiste actie uitvoeren
@@ -25,17 +19,17 @@ if ($site->request=='GET' && ($site->action=='NEW' || $site->action=='EDIT')) {
 	// Details formulier laden
 	// Als edit, dan huidige data laden
 	if ($site->action=='EDIT') {
-		if (!isset($_GET['userid'])) {
+		if (!isset($_GET['username'])) {
 			$site->error = "Formulier fout";
 			exit();
 		}
-		$model->setCurrentUser($_GET['userid']);
+		$model->setCurrentUser($_GET['username']);
 		$smarty->assign('action', 'update');
 	} else {
 		$smarty->assign('action', 'new');
 	}
 	// display it
-	$site->template = "userdetails";
+	$smarty->display("templates/userdetails.tpl");
 	
 } else {
 	if ($site->request=='GET' && $site->action=='VALIDATE') {
@@ -46,8 +40,8 @@ if ($site->request=='GET' && ($site->action=='NEW' || $site->action=='EDIT')) {
 		$field = $_GET['field'];
 		$value = $_GET[$field];
 		switch($field) {
-			case 'userid' :
-				if (!$model->useridExists($value)) {
+			case 'username' :
+				if (!$model->usernameExists($value)) {
 					echo "true";
 				} else {
 					echo json_encode("Deze gebruikersnaam bestaat al");
@@ -65,11 +59,6 @@ if ($site->request=='GET' && ($site->action=='NEW' || $site->action=='EDIT')) {
 				case 'NEW' :
 					$model->insert(); 
 					break;
-				case 'UPDATE' :
-					$model->update();
-					break;
-				case 'DELETE' :
-					$model->delete();
 				default : // Print error
 			}
 		}		
@@ -77,9 +66,4 @@ if ($site->request=='GET' && ($site->action=='NEW' || $site->action=='EDIT')) {
 		$smarty->display('templates/users.tpl');
 	}
 }
- 
- 
-
-
-	
 ?>

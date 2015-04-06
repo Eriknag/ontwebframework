@@ -1,22 +1,22 @@
 <input type="hidden" name="action" value="{$action}"/>
 <div class="form-group">
-	 <label class="control-label" for="userid">Gebruikersnaam *</label>
-	 <input  type="text" class="form-control" name="userid" 
-	 		{if strlen($model->currentUser->userid)>0}
+	 <label class="control-label" for="username">Gebruikersnaam *</label>
+	 <input  type="text" class="form-control" name="username" 
+	 		{if strlen($model->currentUser->username)>0}
 	 			readonly
 	 		{else}
 	 			required minlength="2" 
 	 		{/if}
-	 		value="{$model->currentUser->userid}"/>
+	 		value="{$model->currentUser->username}"/>
 </div>		 
 <div class="form-group">
-	 <label class="control-label" for="first_name">Voornaam *</label>
-	 <input  type="text" class="form-control" name="first_name" 
+	 <label class="control-label" for="firstname">Voornaam *</label>
+	 <input  type="text" class="form-control" name="firstname" 
 	 		required value="{$model->currentUser->firstname}"/>
 </div>		 
 <div class="form-group">
-	 <label class="control-label" for="last_name">Achternaam *</label>
-	 <input  type="text" class="form-control" name="last_name" 
+	 <label class="control-label" for="lastname">Achternaam *</label>
+	 <input  type="text" class="form-control" name="lastname" 
 	 		required value="{$model->currentUser->lastname}"/>
 </div>
 <div class="form-group">

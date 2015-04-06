@@ -1,13 +1,13 @@
 <?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-06 22:43:26
-         compiled from ".\templates\login.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:286905522efeeb312b8-95935121%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+         compiled from ".\templates\gebruikersbeheer.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:86485522efeea7b746-35029356%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '698c27d31350ae15ee0f3267c88a14b0c6ed4285' => 
+    'c69a3e5f35709fa2869df1a800b5b371f8c15681' => 
     array (
-      0 => '.\\templates\\login.tpl',
-      1 => 1427228777,
+      0 => '.\\templates\\gebruikersbeheer.tpl',
+      1 => 1428008925,
       2 => 'file',
     ),
     'd024ab6e9f1546a956d8b3e5784904d86d5a99b0' => 
@@ -17,7 +17,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '286905522efeeb312b8-95935121',
+  'nocache_hash' => '86485522efeea7b746-35029356',
   'function' => 
   array (
   ),
@@ -27,9 +27,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5522efeeb644a9_82329667',
+  'unifunc' => 'content_5522efeeac0944_73671653',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5522efeeb644a9_82329667')) {function content_5522efeeb644a9_82329667($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_5522efeeac0944_73671653')) {function content_5522efeeac0944_73671653($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -39,7 +39,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   
-  <title>Default Page Title</title>
+  <title>DBS test</title>
   <meta name="description" content="">
   <meta name="author" content="waar0003">
 
@@ -131,6 +131,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<?php }?>
 		
 		
+hoi
+
 		
 		
 		<div class="modal fade" id="loginform" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">

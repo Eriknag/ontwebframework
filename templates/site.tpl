@@ -38,16 +38,22 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="index.php">DBSTest</a>
+		      <a class="navbar-brand" href="/">Ontweb</a>
 		    </div>
 		
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
-		      	<li {if $site->page=='about.php'}class="active"{/if}><a href="?page=about">Over ons</a></li>
-		      	<li {if $site->page=='game.php'}class="active"{/if}><a href="?page=game">Game corner</a></li>
-		      	<li {if $site->page=='contact.php'}class="active"{/if}><a href="?page=contact">Contact</a></li>
 		      	{if $site->isLoggedin()}
+				<li {if $site->page=='gebruikersbeheer'}class="active"{/if}><a href="?page=gebruikersbeheer">Gebruikersbeheer</a></li>
+		      	<li {if $site->page=='database'}class="active"{/if}><a href="?page=database">Database</a></li>
+		      	<li class="dropdown">
+		      		<a href="#" class="dropdown-toggle" data-toggle="dropdown">My Module</a>
+		      		<ul class="dropdown-menu" role="menu">
+		      			<li><a id="page1" href="?module=my_module&page=page1">Page 1</a>
+		      			<li><a id="page2" href="?module=my_module&page=page2">Page 2</a>
+		      		</ul>
+		      	</li>
 		      	{/if}
 		      </ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -55,12 +61,8 @@
 					    <li class="dropdown">
 					        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{$site->account->getAuthenticatedUsername()} <span class="caret"></span></a>
 					        <ul class="dropdown-menu" role="menu">
-					      		<li><a href="?page=usermgmt">Gebruikersbeheer</a></li>
-					      		<li><a href="?page=competitiemgmt">Competitiebeheer</a></li>
-						        <li class="divider"></li>
 						        <li><a id="profile" href="#">Profiel</a></li>
-						        <li class="divider"></li>
-						        <li><a href="?page=login?action=logoff">Afmelden</a></li>
+						        <li><a href="?page=login&action=logoff">Afmelden</a></li>
 					        </ul>
 				    {else}
 						 <!-- <li><a id="login" href="#">Log in</a></li> -->

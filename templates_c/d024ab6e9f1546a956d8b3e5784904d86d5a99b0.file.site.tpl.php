@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-24 21:21:26
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-06 22:43:26
          compiled from ".\templates\site.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:137455511c746700122-75215288%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:255715522efeeb7a380-78953735%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'd024ab6e9f1546a956d8b3e5784904d86d5a99b0' => 
     array (
       0 => '.\\templates\\site.tpl',
-      1 => 1427144804,
+      1 => 1428353001,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '137455511c746700122-75215288',
+  'nocache_hash' => '255715522efeeb7a380-78953735',
   'function' => 
   array (
   ),
@@ -21,9 +21,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5511c746731c25_93165616',
+  'unifunc' => 'content_5522efeeba8f51_19989733',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5511c746731c25_93165616')) {function content_5511c746731c25_93165616($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_5522efeeba8f51_19989733')) {function content_5522efeeba8f51_19989733($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -63,16 +63,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="index.php">DBSTest</a>
+		      <a class="navbar-brand" href="/">Ontweb</a>
 		    </div>
 		
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
-		      	<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='about.php') {?>class="active"<?php }?>><a href="?page=about">Over ons</a></li>
-		      	<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='game.php') {?>class="active"<?php }?>><a href="?page=game">Game corner</a></li>
-		      	<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='contact.php') {?>class="active"<?php }?>><a href="?page=contact">Contact</a></li>
 		      	<?php if ($_smarty_tpl->tpl_vars['site']->value->isLoggedin()) {?>
+				<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='gebruikersbeheer') {?>class="active"<?php }?>><a href="?page=gebruikersbeheer&template=gebruikersbeheer">Gebruikersbeheer</a></li>
+		      	<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='database') {?>class="active"<?php }?>><a href="?page=database&template=database">Database</a></li>
 		      	<?php }?>
 		      </ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -81,12 +80,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_smarty_tpl->tpl_vars['site']->value->account->getAuthenticatedUsername();?>
  <span class="caret"></span></a>
 					        <ul class="dropdown-menu" role="menu">
-					      		<li><a href="?page=usermgmt">Gebruikersbeheer</a></li>
-					      		<li><a href="?page=competitiemgmt">Competitiebeheer</a></li>
-						        <li class="divider"></li>
 						        <li><a id="profile" href="#">Profiel</a></li>
-						        <li class="divider"></li>
-						        <li><a href="?page=login?action=logoff">Afmelden</a></li>
+						        <li><a href="?page=login&action=logoff">Afmelden</a></li>
 					        </ul>
 				    <?php } else { ?>
 						 <!-- <li><a id="login" href="#">Log in</a></li> -->

@@ -1,23 +1,23 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-06 22:43:26
-         compiled from ".\templates\login.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:286905522efeeb312b8-95935121%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-06 23:24:26
+         compiled from "modules\my_module\templates\page1.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:93385522f98a5d48f7-12451723%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '698c27d31350ae15ee0f3267c88a14b0c6ed4285' => 
+    '92fb286d62cfd6e46a163fd87712590f46cf5f8e' => 
     array (
-      0 => '.\\templates\\login.tpl',
-      1 => 1427228777,
+      0 => 'modules\\my_module\\templates\\page1.tpl',
+      1 => 1428354529,
       2 => 'file',
     ),
     'd024ab6e9f1546a956d8b3e5784904d86d5a99b0' => 
     array (
-      0 => '.\\templates\\site.tpl',
-      1 => 1428353001,
+      0 => 'C:\\xampp\\htdocs\\templates\\site.tpl',
+      1 => 1428355185,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '286905522efeeb312b8-95935121',
+  'nocache_hash' => '93385522f98a5d48f7-12451723',
   'function' => 
   array (
   ),
@@ -27,9 +27,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5522efeeb644a9_82329667',
+  'unifunc' => 'content_5522f98a652ca3_92881684',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5522efeeb644a9_82329667')) {function content_5522efeeb644a9_82329667($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_5522f98a652ca3_92881684')) {function content_5522f98a652ca3_92881684($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -39,7 +39,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   
-  <title>Default Page Title</title>
+  <title>Ontweb - my_module - page1</title>
   <meta name="description" content="">
   <meta name="author" content="waar0003">
 
@@ -76,8 +76,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
 		      	<?php if ($_smarty_tpl->tpl_vars['site']->value->isLoggedin()) {?>
-				<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='gebruikersbeheer') {?>class="active"<?php }?>><a href="?page=gebruikersbeheer&template=gebruikersbeheer">Gebruikersbeheer</a></li>
-		      	<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='database') {?>class="active"<?php }?>><a href="?page=database&template=database">Database</a></li>
+				<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='gebruikersbeheer') {?>class="active"<?php }?>><a href="?page=gebruikersbeheer">Gebruikersbeheer</a></li>
+		      	<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='database') {?>class="active"<?php }?>><a href="?page=database">Database</a></li>
+		      	<li class="dropdown">
+		      		<a href="#" class="dropdown-toggle" data-toggle="dropdown">My Module</a>
+		      		<ul class="dropdown-menu" role="menu">
+		      			<li><a id="page1" href="?module=my_module&page=page1">Page 1</a>
+		      			<li><a id="page2" href="?module=my_module&page=page2">Page 2</a>
+		      		</ul>
+		      	</li>
 		      	<?php }?>
 		      </ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -131,6 +138,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<?php }?>
 		
 		
+Dit is pagina 1.
+
 		
 		
 		<div class="modal fade" id="loginform" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">

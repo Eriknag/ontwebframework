@@ -1,35 +1,35 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-03-24 21:21:26
-         compiled from ".\templates\users.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:56555511c74679ddd4-95709487%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-06 23:23:58
+         compiled from "templates\users.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:73215522efeebeaaf9-31681137%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '2f8186f98073bd128e0b9c9d2d86db9792f63954' => 
     array (
-      0 => '.\\templates\\users.tpl',
-      1 => 1425832373,
+      0 => 'templates\\users.tpl',
+      1 => 1428334865,
       2 => 'file',
     ),
     'd024ab6e9f1546a956d8b3e5784904d86d5a99b0' => 
     array (
       0 => '.\\templates\\site.tpl',
-      1 => 1427144804,
+      1 => 1428355185,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '56555511c74679ddd4-95709487',
+  'nocache_hash' => '73215522efeebeaaf9-31681137',
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_5522efeec57d25_63091187',
   'variables' => 
   array (
     'site' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5511c74681b530_90943958',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5511c74681b530_90943958')) {function content_5511c74681b530_90943958($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_5522efeec57d25_63091187')) {function content_5522efeec57d25_63091187($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -69,16 +69,22 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="index.php">DBSTest</a>
+		      <a class="navbar-brand" href="/">Ontweb</a>
 		    </div>
 		
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
-		      	<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='about.php') {?>class="active"<?php }?>><a href="?page=about">Over ons</a></li>
-		      	<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='game.php') {?>class="active"<?php }?>><a href="?page=game">Game corner</a></li>
-		      	<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='contact.php') {?>class="active"<?php }?>><a href="?page=contact">Contact</a></li>
 		      	<?php if ($_smarty_tpl->tpl_vars['site']->value->isLoggedin()) {?>
+				<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='gebruikersbeheer') {?>class="active"<?php }?>><a href="?page=gebruikersbeheer">Gebruikersbeheer</a></li>
+		      	<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='database') {?>class="active"<?php }?>><a href="?page=database">Database</a></li>
+		      	<li class="dropdown">
+		      		<a href="#" class="dropdown-toggle" data-toggle="dropdown">My Module</a>
+		      		<ul class="dropdown-menu" role="menu">
+		      			<li><a id="page1" href="?module=my_module&page=page1">Page 1</a>
+		      			<li><a id="page2" href="?module=my_module&page=page2">Page 2</a>
+		      		</ul>
+		      	</li>
 		      	<?php }?>
 		      </ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -87,12 +93,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_smarty_tpl->tpl_vars['site']->value->account->getAuthenticatedUsername();?>
  <span class="caret"></span></a>
 					        <ul class="dropdown-menu" role="menu">
-					      		<li><a href="?page=usermgmt">Gebruikersbeheer</a></li>
-					      		<li><a href="?page=competitiemgmt">Competitiebeheer</a></li>
-						        <li class="divider"></li>
 						        <li><a id="profile" href="#">Profiel</a></li>
-						        <li class="divider"></li>
-						        <li><a href="?page=login?action=logoff">Afmelden</a></li>
+						        <li><a href="?page=login&action=logoff">Afmelden</a></li>
 					        </ul>
 				    <?php } else { ?>
 						 <!-- <li><a id="login" href="#">Log in</a></li> -->
@@ -144,15 +146,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		  	<button type="button" id="btnInsert" class="btn btn-default btn-sm">
 				<span class="glyphicon glyphicon-plus"></span>
 			</button>
-			<button type="button" id="btnDelete" class="btn btn-default btn-sm">
-				<span class="glyphicon glyphicon-trash"></span>
-			</button>
 		</div>
 	  </div>
 	  <!-- Table -->
 	  <table id="userstable" class="table table-striped table-hover">
 	  	<tr>
-	  		<th></th>
 	  		<th>Gebruikersnaam</th>
 	  		<th>Voornaam</th>
 	  		<th>Achternaam</th>
@@ -165,21 +163,19 @@ foreach ($_from as $_smarty_tpl->tpl_vars['user']->key => $_smarty_tpl->tpl_vars
 $_smarty_tpl->tpl_vars['user']->_loop = true;
 ?>
 			<tr>
-				<td><input type="checkbox" class="cbDelete" id="<?php echo $_smarty_tpl->tpl_vars['user']->value->userid;?>
-"></td>
-				<td class="btnEdit" id="<?php echo $_smarty_tpl->tpl_vars['user']->value->userid;?>
-"><?php echo $_smarty_tpl->tpl_vars['user']->value->userid;?>
+				<td class="btnEdit" id="<?php echo $_smarty_tpl->tpl_vars['user']->value->username;?>
+"><?php echo $_smarty_tpl->tpl_vars['user']->value->username;?>
 </td>
-				<td class="btnEdit" id="<?php echo $_smarty_tpl->tpl_vars['user']->value->userid;?>
+				<td class="btnEdit" id="<?php echo $_smarty_tpl->tpl_vars['user']->value->username;?>
 "><?php echo $_smarty_tpl->tpl_vars['user']->value->firstname;?>
 </td>
-				<td class="btnEdit" id="<?php echo $_smarty_tpl->tpl_vars['user']->value->userid;?>
+				<td class="btnEdit" id="<?php echo $_smarty_tpl->tpl_vars['user']->value->username;?>
 "><?php echo $_smarty_tpl->tpl_vars['user']->value->lastname;?>
 </td>
-				<td class="btnEdit" id="<?php echo $_smarty_tpl->tpl_vars['user']->value->userid;?>
+				<td class="btnEdit" id="<?php echo $_smarty_tpl->tpl_vars['user']->value->username;?>
 "><?php echo $_smarty_tpl->tpl_vars['user']->value->email;?>
 </td>
-				<td class="btnEdit" id="<?php echo $_smarty_tpl->tpl_vars['user']->value->userid;?>
+				<td class="btnEdit" id="<?php echo $_smarty_tpl->tpl_vars['user']->value->username;?>
 "><?php echo $_smarty_tpl->tpl_vars['user']->value->telephone;?>
 </td>
 			</tr>
@@ -211,32 +207,6 @@ $_smarty_tpl->tpl_vars['user']->_loop = true;
 		</div>
 	</div>
 	
-	
-	<div class="modal fade" id="confirmdelete" tabindex="-1" role="dialog" aria-labelledby="confirmdeleteLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-					<div class="modal-header">
-    					<button type="button" class="close" data-dismiss="modal">
-    						<span aria-hidden="true">&times;</span>
-    						<span class="sr-only">Sluiten</span>
-    					</button>
-    					<h4 class="modal-title" id="myModalLabel">Bevestig verwijderen</h4>
-  					</div>
-      				<div class="modal-body">
-  						Verwijderen gebruiker(s): <span id="user_namespan"></span>?
-						<form name="confirmdeleteform" id="confirmdeleteform" role="form" action=""  method="post">
-							<input type="hidden" name="action" value="delete"/>
-							<input type="hidden" name="userid_list" value=""/>
-							<input type="submit" style="display:none" />				
-				      	</form>
-      				</div>
-		      		<div class="modal-footer">
-		        		<button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>
-		        		<button type="button" class="btn btn-primary" id="btnSubmitDelete">Verwijderen</button>
-		      		</div>
-	      	</div>
-		</div>
-	</div>
 	<div id="userlist" class="list-group">	
 	</div>
 	<div id="content" class="right">

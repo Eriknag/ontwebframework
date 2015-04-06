@@ -12,15 +12,11 @@
 		  	<button type="button" id="btnInsert" class="btn btn-default btn-sm">
 				<span class="glyphicon glyphicon-plus"></span>
 			</button>
-			<button type="button" id="btnDelete" class="btn btn-default btn-sm">
-				<span class="glyphicon glyphicon-trash"></span>
-			</button>
 		</div>
 	  </div>
 	  <!-- Table -->
 	  <table id="userstable" class="table table-striped table-hover">
 	  	<tr>
-	  		<th></th>
 	  		<th>Gebruikersnaam</th>
 	  		<th>Voornaam</th>
 	  		<th>Achternaam</th>
@@ -29,12 +25,11 @@
 	  	</tr>
 			{foreach $model->readUsers() as $user}
 			<tr>
-				<td><input type="checkbox" class="cbDelete" id="{$user->userid}"></td>
-				<td class="btnEdit" id="{$user->userid}">{$user->userid}</td>
-				<td class="btnEdit" id="{$user->userid}">{$user->firstname}</td>
-				<td class="btnEdit" id="{$user->userid}">{$user->lastname}</td>
-				<td class="btnEdit" id="{$user->userid}">{$user->email}</td>
-				<td class="btnEdit" id="{$user->userid}">{$user->telephone}</td>
+				<td class="btnEdit" id="{$user->username}">{$user->username}</td>
+				<td class="btnEdit" id="{$user->username}">{$user->firstname}</td>
+				<td class="btnEdit" id="{$user->username}">{$user->lastname}</td>
+				<td class="btnEdit" id="{$user->username}">{$user->email}</td>
+				<td class="btnEdit" id="{$user->username}">{$user->telephone}</td>
 			</tr>
 			{/foreach}
 	  </table>
@@ -64,32 +59,6 @@
 		</div>
 	</div>
 	
-	{* Het formulier voor het bevestigen van een verwijdering *}
-	<div class="modal fade" id="confirmdelete" tabindex="-1" role="dialog" aria-labelledby="confirmdeleteLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-					<div class="modal-header">
-    					<button type="button" class="close" data-dismiss="modal">
-    						<span aria-hidden="true">&times;</span>
-    						<span class="sr-only">Sluiten</span>
-    					</button>
-    					<h4 class="modal-title" id="myModalLabel">Bevestig verwijderen</h4>
-  					</div>
-      				<div class="modal-body">
-  						Verwijderen gebruiker(s): <span id="user_namespan"></span>?
-						<form name="confirmdeleteform" id="confirmdeleteform" role="form" action=""  method="post">
-							<input type="hidden" name="action" value="delete"/>
-							<input type="hidden" name="userid_list" value=""/>
-							<input type="submit" style="display:none" />				
-				      	</form>
-      				</div>
-		      		<div class="modal-footer">
-		        		<button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>
-		        		<button type="button" class="btn btn-primary" id="btnSubmitDelete">Verwijderen</button>
-		      		</div>
-	      	</div>
-		</div>
-	</div>
 	<div id="userlist" class="list-group">	
 	</div>
 	<div id="content" class="right">
