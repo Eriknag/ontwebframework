@@ -1,5 +1,16 @@
 # ontwebframework
-Hier komt een library waarmee 1e jaars studenten ONTWEB een webapplicatie kunnen ontwikkelen
-- Laadt de database in met het .sql bestand in de data folder.
-- Pas in model/db.php de host, databasename, username en password aan zodat er met de juiste database connectie wordt gemaakt.
-- Host die ding.
+Dit is een framework voor eerstejaars HZ-studenten.
+De studenten kunnen dit framework in hun eigen branch aanpassen en vervolgens de aanpassingen teurg comitten naar de head-branch.
+
+# het framework installeren op localhost
+## benodigdheden
+- xampp
+- skills
+
+## uitvoering
+Download de hele github-directory in je xampp htdocs-folder.
+Laadt dbtest.sql, te vinden in de data-folder, in je phpmyadmin-applicatie.
+Klaar.
+
+# modules aanmaken
+\#todo

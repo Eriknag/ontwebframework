@@ -1,29 +1,32 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-06 22:43:26
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-03 21:01:57
          compiled from ".\templates\site.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:255715522efeeb7a380-78953735%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:28178554670a58c4c50-60319364%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'd024ab6e9f1546a956d8b3e5784904d86d5a99b0' => 
     array (
       0 => '.\\templates\\site.tpl',
-      1 => 1428353001,
+      1 => 1430424968,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '255715522efeeb7a380-78953735',
+  'nocache_hash' => '28178554670a58c4c50-60319364',
   'function' => 
   array (
   ),
   'variables' => 
   array (
+    'menu' => 0,
+    'module' => 0,
+    'page' => 0,
     'site' => 0,
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5522efeeba8f51_19989733',
+  'unifunc' => 'content_554670a590c170_07040749',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5522efeeba8f51_19989733')) {function content_5522efeeba8f51_19989733($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_554670a590c170_07040749')) {function content_554670a590c170_07040749($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -48,6 +51,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	
 	<link rel="stylesheet" type="text/css" 
 	   href="css/style.css"/>
+	   
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 </head>
 
@@ -69,10 +75,45 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
-		      	<?php if ($_smarty_tpl->tpl_vars['site']->value->isLoggedin()) {?>
-				<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='gebruikersbeheer') {?>class="active"<?php }?>><a href="?page=gebruikersbeheer&template=gebruikersbeheer">Gebruikersbeheer</a></li>
-		      	<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='database') {?>class="active"<?php }?>><a href="?page=database&template=database">Database</a></li>
-		      	<?php }?>
+		        <?php  $_smarty_tpl->tpl_vars['module'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['module']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['menu']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['module']->key => $_smarty_tpl->tpl_vars['module']->value) {
+$_smarty_tpl->tpl_vars['module']->_loop = true;
+?>
+		        	<?php if ($_smarty_tpl->tpl_vars['module']->value['name']=='') {?>
+		        		<?php  $_smarty_tpl->tpl_vars['page'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['page']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['module']->value['pages']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['page']->key => $_smarty_tpl->tpl_vars['page']->value) {
+$_smarty_tpl->tpl_vars['page']->_loop = true;
+?>
+		      				<li><a href=<?php echo $_smarty_tpl->tpl_vars['page']->value['uri'];?>
+><?php echo $_smarty_tpl->tpl_vars['page']->value['pagename'];?>
+</a></li>
+		      			<?php } ?>
+		      		<?php } else { ?>
+		      			<?php if ($_smarty_tpl->tpl_vars['module']->value['page_amount']==1) {?>
+		      				<li><a href=<?php echo $_smarty_tpl->tpl_vars['module']->value['pages'][0]['uri'];?>
+><?php echo $_smarty_tpl->tpl_vars['module']->value['name'];?>
+</a></li>
+		      			<?php } else { ?>
+		      				<li class="dropdown">
+		      					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_smarty_tpl->tpl_vars['module']->value['name'];?>
+</a>
+			      				<ul class="dropdown-menu" role="menu">
+			      					<?php  $_smarty_tpl->tpl_vars['page'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['page']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['module']->value['pages']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['page']->key => $_smarty_tpl->tpl_vars['page']->value) {
+$_smarty_tpl->tpl_vars['page']->_loop = true;
+?>
+		      							<li><a href=<?php echo $_smarty_tpl->tpl_vars['page']->value['uri'];?>
+><?php echo $_smarty_tpl->tpl_vars['page']->value['pagename'];?>
+</a></li>
+		      						<?php } ?>
+			      				</ul>
+		      				</li>
+		      			<?php }?>
+		      		<?php }?>
+		      	<?php } ?>
 		      </ul>
 				<ul class="nav navbar-nav navbar-right">
 				    <?php if ($_smarty_tpl->tpl_vars['site']->value->isLoggedin()) {?>
@@ -84,7 +125,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						        <li><a href="?page=login&action=logoff">Afmelden</a></li>
 					        </ul>
 				    <?php } else { ?>
-						 <!-- <li><a id="login" href="#">Log in</a></li> -->
 				          <li class="dropdown" id="menuLogin">
 				            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
 				            <div class="dropdown-menu" style="width:300px; padding:17px;">

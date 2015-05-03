@@ -1,35 +1,38 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-06 23:23:58
-         compiled from "templates\users.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:73215522efeebeaaf9-31681137%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-03 21:01:57
+         compiled from ".\templates\users.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:4064554670a59527a4-76466724%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '2f8186f98073bd128e0b9c9d2d86db9792f63954' => 
     array (
-      0 => 'templates\\users.tpl',
-      1 => 1428334865,
+      0 => '.\\templates\\users.tpl',
+      1 => 1430426208,
       2 => 'file',
     ),
     'd024ab6e9f1546a956d8b3e5784904d86d5a99b0' => 
     array (
       0 => '.\\templates\\site.tpl',
-      1 => 1428355185,
+      1 => 1430424968,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '73215522efeebeaaf9-31681137',
+  'nocache_hash' => '4064554670a59527a4-76466724',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5522efeec57d25_63091187',
   'variables' => 
   array (
+    'menu' => 0,
+    'module' => 0,
+    'page' => 0,
     'site' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_554670a59fb027_76446651',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5522efeec57d25_63091187')) {function content_5522efeec57d25_63091187($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_554670a59fb027_76446651')) {function content_554670a59fb027_76446651($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -54,6 +57,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	
 	<link rel="stylesheet" type="text/css" 
 	   href="css/style.css"/>
+	   
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 </head>
 
@@ -75,17 +81,45 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
-		      	<?php if ($_smarty_tpl->tpl_vars['site']->value->isLoggedin()) {?>
-				<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='gebruikersbeheer') {?>class="active"<?php }?>><a href="?page=gebruikersbeheer">Gebruikersbeheer</a></li>
-		      	<li <?php if ($_smarty_tpl->tpl_vars['site']->value->page=='database') {?>class="active"<?php }?>><a href="?page=database">Database</a></li>
-		      	<li class="dropdown">
-		      		<a href="#" class="dropdown-toggle" data-toggle="dropdown">My Module</a>
-		      		<ul class="dropdown-menu" role="menu">
-		      			<li><a id="page1" href="?module=my_module&page=page1">Page 1</a>
-		      			<li><a id="page2" href="?module=my_module&page=page2">Page 2</a>
-		      		</ul>
-		      	</li>
-		      	<?php }?>
+		        <?php  $_smarty_tpl->tpl_vars['module'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['module']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['menu']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['module']->key => $_smarty_tpl->tpl_vars['module']->value) {
+$_smarty_tpl->tpl_vars['module']->_loop = true;
+?>
+		        	<?php if ($_smarty_tpl->tpl_vars['module']->value['name']=='') {?>
+		        		<?php  $_smarty_tpl->tpl_vars['page'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['page']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['module']->value['pages']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['page']->key => $_smarty_tpl->tpl_vars['page']->value) {
+$_smarty_tpl->tpl_vars['page']->_loop = true;
+?>
+		      				<li><a href=<?php echo $_smarty_tpl->tpl_vars['page']->value['uri'];?>
+><?php echo $_smarty_tpl->tpl_vars['page']->value['pagename'];?>
+</a></li>
+		      			<?php } ?>
+		      		<?php } else { ?>
+		      			<?php if ($_smarty_tpl->tpl_vars['module']->value['page_amount']==1) {?>
+		      				<li><a href=<?php echo $_smarty_tpl->tpl_vars['module']->value['pages'][0]['uri'];?>
+><?php echo $_smarty_tpl->tpl_vars['module']->value['name'];?>
+</a></li>
+		      			<?php } else { ?>
+		      				<li class="dropdown">
+		      					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_smarty_tpl->tpl_vars['module']->value['name'];?>
+</a>
+			      				<ul class="dropdown-menu" role="menu">
+			      					<?php  $_smarty_tpl->tpl_vars['page'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['page']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['module']->value['pages']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['page']->key => $_smarty_tpl->tpl_vars['page']->value) {
+$_smarty_tpl->tpl_vars['page']->_loop = true;
+?>
+		      							<li><a href=<?php echo $_smarty_tpl->tpl_vars['page']->value['uri'];?>
+><?php echo $_smarty_tpl->tpl_vars['page']->value['pagename'];?>
+</a></li>
+		      						<?php } ?>
+			      				</ul>
+		      				</li>
+		      			<?php }?>
+		      		<?php }?>
+		      	<?php } ?>
 		      </ul>
 				<ul class="nav navbar-nav navbar-right">
 				    <?php if ($_smarty_tpl->tpl_vars['site']->value->isLoggedin()) {?>
@@ -97,7 +131,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						        <li><a href="?page=login&action=logoff">Afmelden</a></li>
 					        </ul>
 				    <?php } else { ?>
-						 <!-- <li><a id="login" href="#">Log in</a></li> -->
 				          <li class="dropdown" id="menuLogin">
 				            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
 				            <div class="dropdown-menu" style="width:300px; padding:17px;">
@@ -142,21 +175,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	  <!-- Default panel contents -->
 	  <div class="panel-heading"><h3>Gebruikersbeheer</h3></div>
 	  <div class="panel-body">
-		<div class="btn-group">
-		  	<button type="button" id="btnInsert" class="btn btn-default btn-sm">
-				<span class="glyphicon glyphicon-plus"></span>
-			</button>
-		</div>
-	  </div>
-	  <!-- Table -->
-	  <table id="userstable" class="table table-striped table-hover">
-	  	<tr>
-	  		<th>Gebruikersnaam</th>
-	  		<th>Voornaam</th>
-	  		<th>Achternaam</th>
-	  		<th>Email adres</th>
-	  		<th>Telefoonnummer</th>
-	  	</tr>
+	  	<table id="userstable" class="table table-striped table-hover">
+		  	<tr>
+		  		<th>Gebruikersnaam</th>
+		  		<th>Voornaam</th>
+		  		<th>Achternaam</th>
+		  		<th>Email adres</th>
+		  		<th>Telefoonnummer</th>
+			</tr>
 			<?php  $_smarty_tpl->tpl_vars['user'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['user']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['model']->value->readUsers(); if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['user']->key => $_smarty_tpl->tpl_vars['user']->value) {
@@ -180,7 +206,14 @@ $_smarty_tpl->tpl_vars['user']->_loop = true;
 </td>
 			</tr>
 			<?php } ?>
-	  </table>
+		</table>
+		<div class="btn-group">
+		  	<button type="button" id="btnInsert" class="btn btn-default btn-sm">
+				<i class="fa fa-user-plus"> Gebruiker Toevoegen</i>
+			</button>
+		</div>
+	  </div>
+	  <!-- Table -->
 	</div>
 	
 				

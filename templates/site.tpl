@@ -23,6 +23,9 @@
 	
 	<link rel="stylesheet" type="text/css" 
 	   href="css/style.css"/>
+	   
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 </head>
 
@@ -44,17 +47,26 @@
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
-		      	{if $site->isLoggedin()}
-				<li {if $site->page=='gebruikersbeheer'}class="active"{/if}><a href="?page=gebruikersbeheer">Gebruikersbeheer</a></li>
-		      	<li {if $site->page=='database'}class="active"{/if}><a href="?page=database">Database</a></li>
-		      	<li class="dropdown">
-		      		<a href="#" class="dropdown-toggle" data-toggle="dropdown">My Module</a>
-		      		<ul class="dropdown-menu" role="menu">
-		      			<li><a id="page1" href="?module=my_module&page=page1">Page 1</a>
-		      			<li><a id="page2" href="?module=my_module&page=page2">Page 2</a>
-		      		</ul>
-		      	</li>
-		      	{/if}
+		        {foreach from=$menu item=module}
+		        	{if $module.name eq ""}
+		        		{foreach from=$module.pages item=page}
+		      				<li><a href={$page.uri}>{$page.pagename}</a></li>
+		      			{/foreach}
+		      		{else}
+		      			{if $module.page_amount eq 1}
+		      				<li><a href={$module.pages[0].uri}>{$module.name}</a></li>
+		      			{else}
+		      				<li class="dropdown">
+		      					<a href="#" class="dropdown-toggle" data-toggle="dropdown">{$module.name}</a>
+			      				<ul class="dropdown-menu" role="menu">
+			      					{foreach from=$module.pages item=page}
+		      							<li><a href={$page.uri}>{$page.pagename}</a></li>
+		      						{/foreach}
+			      				</ul>
+		      				</li>
+		      			{/if}
+		      		{/if}
+		      	{/foreach}
 		      </ul>
 				<ul class="nav navbar-nav navbar-right">
 				    {if $site->isLoggedin()}
@@ -65,7 +77,6 @@
 						        <li><a href="?page=login&action=logoff">Afmelden</a></li>
 					        </ul>
 				    {else}
-						 <!-- <li><a id="login" href="#">Log in</a></li> -->
 				          <li class="dropdown" id="menuLogin">
 				            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
 				            <div class="dropdown-menu" style="width:300px; padding:17px;">

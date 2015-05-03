@@ -8,21 +8,14 @@
 	  <!-- Default panel contents -->
 	  <div class="panel-heading"><h3>Gebruikersbeheer</h3></div>
 	  <div class="panel-body">
-		<div class="btn-group">
-		  	<button type="button" id="btnInsert" class="btn btn-default btn-sm">
-				<span class="glyphicon glyphicon-plus"></span>
-			</button>
-		</div>
-	  </div>
-	  <!-- Table -->
-	  <table id="userstable" class="table table-striped table-hover">
-	  	<tr>
-	  		<th>Gebruikersnaam</th>
-	  		<th>Voornaam</th>
-	  		<th>Achternaam</th>
-	  		<th>Email adres</th>
-	  		<th>Telefoonnummer</th>
-	  	</tr>
+	  	<table id="userstable" class="table table-striped table-hover">
+		  	<tr>
+		  		<th>Gebruikersnaam</th>
+		  		<th>Voornaam</th>
+		  		<th>Achternaam</th>
+		  		<th>Email adres</th>
+		  		<th>Telefoonnummer</th>
+			</tr>
 			{foreach $model->readUsers() as $user}
 			<tr>
 				<td class="btnEdit" id="{$user->username}">{$user->username}</td>
@@ -32,7 +25,14 @@
 				<td class="btnEdit" id="{$user->username}">{$user->telephone}</td>
 			</tr>
 			{/foreach}
-	  </table>
+		</table>
+		<div class="btn-group">
+		  	<button type="button" id="btnInsert" class="btn btn-default btn-sm">
+				<i class="fa fa-user-plus"> Gebruiker Toevoegen</i>
+			</button>
+		</div>
+	  </div>
+	  <!-- Table -->
 	</div>
 	
 	{* Het formulier voor het bewerken van de gebruikersdetails *}			

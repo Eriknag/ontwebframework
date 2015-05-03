@@ -51,10 +51,10 @@ require_once('usersmodel.class.php');
 		 * @return TRUE als gebruiker een geauthentiseerde gebruiker is, anders FALSE 
 		 */
 		public function isAuthenticated() {
-			if (!isset($_SESSION)) {
+			if (!isset($_SESSION) || !isset($_SESSION['loggedin'])) {
 				return false;
 			}
-		 	return isset($_SESSION['loggedin']);
+		 	return $_SESSION['loggedin'];
 		}
 		 
 		/**

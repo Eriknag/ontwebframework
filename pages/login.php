@@ -17,5 +17,3 @@ if (isset($_GET['action']) && $_GET['action']==='logoff') {
 		}
 	}
 }
-
-$smarty->display("templates/index.tpl");

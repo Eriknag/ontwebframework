@@ -185,3 +185,7 @@ form span.success {
 .selectiontable .highlight { 
 	background: yellow; 
 }
+
+.modal.modal-wide .modal-dialog {
+  width: 90%;
+}
