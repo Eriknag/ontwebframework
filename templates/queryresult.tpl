@@ -10,7 +10,7 @@
 		{foreach from=$result item=row}
 			<tr>
 			{foreach from=$row item=value}
-				<td class="resultrow">{$value}</td>
+				<td class="resultrow">{if $value != NULL}{$value}{else}<i>null</i>{/if}</td>
 			{/foreach}
 			</tr>
 		{/foreach}

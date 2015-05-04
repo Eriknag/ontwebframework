@@ -3,10 +3,13 @@
 {block name=main}
 	{if $site->hasErrors()}
 	{/if}
-	<h1>Welkom</h1>
-	<p>Hier komt een library waarmee 1e jaars studenten ONTWEB een webapplicatie kunnen ontwikkelen
-	</p>
-	<p>Dit framework is gemaakt door Erik Nagelkerke.
-	</p>		
+	{if $site->isLoggedIn()}
+		<h1>Welkom {$site->account->getCurrentUserFullName()}</h1>
+	{else}
+		<h1>Welkom</h1>
+		<p>Login om te beginnen
+		</p>
+	{/if}
+			
 {/block}
 {extends file=$site->page.".tpl"}

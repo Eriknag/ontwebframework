@@ -1,22 +1,20 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-03 21:19:54
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-04 22:13:40
          compiled from "templates\queryresult.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:6557554670a5881968-86049168%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:195715547d2f44ef640-69414014%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ecec1a646c29bcd5bc750e55390ca6b8796aa141' => 
     array (
       0 => 'templates\\queryresult.tpl',
-      1 => 1430680788,
+      1 => 1430767123,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '6557554670a5881968-86049168',
+  'nocache_hash' => '195715547d2f44ef640-69414014',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_554670a58ae260_48125979',
   'variables' => 
   array (
     'resultFields' => 0,
@@ -26,8 +24,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'value' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_5547d2f4534637_82130270',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_554670a58ae260_48125979')) {function content_554670a58ae260_48125979($_smarty_tpl) {?><div class="form-group">
+<?php if ($_valid && !is_callable('content_5547d2f4534637_82130270')) {function content_5547d2f4534637_82130270($_smarty_tpl) {?><div class="form-group">
 	<table id="userstable" class="table table-striped table-hover">
 		
 		<tr>
@@ -52,8 +52,9 @@ $_smarty_tpl->tpl_vars['row']->_loop = true;
 foreach ($_from as $_smarty_tpl->tpl_vars['value']->key => $_smarty_tpl->tpl_vars['value']->value) {
 $_smarty_tpl->tpl_vars['value']->_loop = true;
 ?>
-				<td class="resultrow"><?php echo $_smarty_tpl->tpl_vars['value']->value;?>
-</td>
+				<td class="resultrow"><?php if ($_smarty_tpl->tpl_vars['value']->value!=null) {
+echo $_smarty_tpl->tpl_vars['value']->value;
+} else { ?><i>null</i><?php }?></td>
 			<?php } ?>
 			</tr>
 		<?php } ?>

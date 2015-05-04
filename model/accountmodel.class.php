@@ -32,7 +32,9 @@ require_once('usersmodel.class.php');
 					$_SESSION['loggedin'] = true;
 					$_SESSION['username'] = $username;
 					return true;
-				}return $user;
+				}else{
+					return false;
+				}
 			}
 			return false;
 		}
@@ -70,7 +72,13 @@ require_once('usersmodel.class.php');
 			return $_SESSION['username'];
 		}
 		 
-		
-		
+		public function getCurrentUserFullName() {
+			if($this->isAuthenticated()){
+				if ($this->usersmodel->currentUser->firstname == "") $this->usersmodel->setCurrentUser($_SESSION['username']);
+				return $this->usersmodel->currentUser->firstname . " " . $this->usersmodel->currentUser->lastname;
+			}else{
+				return "";
+			}
+		}
     }
 ?>

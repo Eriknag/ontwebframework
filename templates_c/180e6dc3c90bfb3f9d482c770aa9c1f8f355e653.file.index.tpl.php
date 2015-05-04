@@ -1,13 +1,13 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-03 21:01:57
-         compiled from ".\templates\index.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:24454554670a5806a70-27035623%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-04 22:13:30
+         compiled from "templates\index.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:170925547d2ea83e179-10064232%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '180e6dc3c90bfb3f9d482c770aa9c1f8f355e653' => 
     array (
-      0 => '.\\templates\\index.tpl',
-      1 => 1428001895,
+      0 => 'templates\\index.tpl',
+      1 => 1430768281,
       2 => 'file',
     ),
     'd024ab6e9f1546a956d8b3e5784904d86d5a99b0' => 
@@ -17,7 +17,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '24454554670a5806a70-27035623',
+  'nocache_hash' => '170925547d2ea83e179-10064232',
   'function' => 
   array (
   ),
@@ -30,9 +30,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_554670a5868284_66197759',
+  'unifunc' => 'content_5547d2ea8e2d03_91725399',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_554670a5868284_66197759')) {function content_554670a5868284_66197759($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_5547d2ea8e2d03_91725399')) {function content_5547d2ea8e2d03_91725399($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -173,11 +173,15 @@ $_smarty_tpl->tpl_vars['page']->_loop = true;
 		
 	<?php if ($_smarty_tpl->tpl_vars['site']->value->hasErrors()) {?>
 	<?php }?>
-	<h1>Welkom</h1>
-	<p>Hier komt een library waarmee 1e jaars studenten ONTWEB een webapplicatie kunnen ontwikkelen
-	</p>
-	<p>Dit framework is gemaakt door Erik Nagelkerke.
-	</p>		
+	<?php if ($_smarty_tpl->tpl_vars['site']->value->isLoggedIn()) {?>
+		<h1>Welkom <?php echo $_smarty_tpl->tpl_vars['site']->value->account->getCurrentUserFullName();?>
+</h1>
+	<?php } else { ?>
+		<h1>Welkom</h1>
+		<p>Login om te beginnen
+		</p>
+	<?php }?>
+			
 
 		
 		

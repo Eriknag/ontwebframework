@@ -1,13 +1,13 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-03 21:50:04
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-04 22:12:19
          compiled from "modules\my_module\templates\page1.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:93385522f98a5d48f7-12451723%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:116695547d2a31f44a9-44054099%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '92fb286d62cfd6e46a163fd87712590f46cf5f8e' => 
     array (
       0 => 'modules\\my_module\\templates\\page1.tpl',
-      1 => 1428354529,
+      1 => 1430770093,
       2 => 'file',
     ),
     'd024ab6e9f1546a956d8b3e5784904d86d5a99b0' => 
@@ -17,12 +17,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '93385522f98a5d48f7-12451723',
+  'nocache_hash' => '116695547d2a31f44a9-44054099',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5522f98a652ca3_92881684',
   'variables' => 
   array (
     'menu' => 0,
@@ -31,8 +29,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'site' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_5547d2a32a6cc3_39149387',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5522f98a652ca3_92881684')) {function content_5522f98a652ca3_92881684($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_5547d2a32a6cc3_39149387')) {function content_5547d2a32a6cc3_39149387($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -171,7 +171,16 @@ $_smarty_tpl->tpl_vars['page']->_loop = true;
 		<?php }?>
 		
 		
-Dit is pagina 1.
+<h1>Dit is een voorbeeldpagina voor een module</h1>
+
+<p>
+	<br /><br />
+	<?php echo $_smarty_tpl->tpl_vars['model']->value->teststring;?>
+
+	<br /><br />
+	<a target="_blank" href="<?php echo $_smarty_tpl->tpl_vars['model']->value->getTestLink();?>
+">Dit is een link</a>
+</p>
 
 		
 		
