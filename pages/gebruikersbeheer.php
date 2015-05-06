@@ -24,9 +24,9 @@ if ($site->request=='GET' && ($site->action=='NEW' || $site->action=='EDIT')) {
 			exit();
 		}
 		$model->setCurrentUser($_GET['username']);
-		$smarty->assign('action', 'update');
+		$smarty->assign('action', 'UPDATE');
 	} else {
-		$smarty->assign('action', 'new');
+		$smarty->assign('action', 'NEW');
 	}
 	// display it
 	$smarty->display("templates/userdetails.tpl");

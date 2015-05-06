@@ -2,10 +2,15 @@
 	
 	class testModel {
 		
+		private $site;
+		
 		public $teststring;
 		
-		public function __construct() {
-				$this->teststring = "Dit is wat tekst op een pagina";
+		public function __construct($site) {
+				$this->site = $site;
+				$res = $this->site->mysqli->query("SELECT * FROM user WHERE username='".$site->account->getCurrentUser()->username."'");
+				$usertel = $res->fetch_assoc()['telephone'];
+				$this->teststring = "Dit je jouw telefoornnummer: ".$usertel;
 		}
 		
 		public function getTestLink(){

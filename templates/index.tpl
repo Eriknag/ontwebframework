@@ -4,7 +4,7 @@
 	{if $site->hasErrors()}
 	{/if}
 	{if $site->isLoggedIn()}
-		<h1>Welkom {$site->account->getCurrentUserFullName()}</h1>
+		<h1>Welkom {$site->account->getCurrentUser()->firstname} {{$site->account->getCurrentUser()->lastname}}</h1>
 	{else}
 		<h1>Welkom</h1>
 		<p>Login om te beginnen

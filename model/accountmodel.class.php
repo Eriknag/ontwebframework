@@ -72,10 +72,10 @@ require_once('usersmodel.class.php');
 			return $_SESSION['username'];
 		}
 		 
-		public function getCurrentUserFullName() {
+		public function getCurrentUser() {
 			if($this->isAuthenticated()){
 				if ($this->usersmodel->currentUser->firstname == "") $this->usersmodel->setCurrentUser($_SESSION['username']);
-				return $this->usersmodel->currentUser->firstname . " " . $this->usersmodel->currentUser->lastname;
+				return $this->usersmodel->currentUser;
 			}else{
 				return "";
 			}

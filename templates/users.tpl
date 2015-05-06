@@ -4,6 +4,7 @@
 	<script src="js/usermgmt.js"></script>
 {/block}
 {block name=main}
+	{$site->action}
 	<div class="panel panel-default">
 	  <!-- Default panel contents -->
 	  <div class="panel-heading"><h3>Gebruikersbeheer</h3></div>
@@ -47,7 +48,7 @@
     					<h4 class="modal-title" id="myModalLabel">Gebruiker details</h4>
   					</div>
       				<div class="modal-body">
-						<form name="detailsform" id="detailsform" role="form" action=""  method="post">
+						<form name="detailsform" id="detailsform" role="form" action="" method="post">
 				
 				      	</form>
       				</div>

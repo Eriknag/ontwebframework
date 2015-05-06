@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-04 22:12:17
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-06 22:34:23
          compiled from "templates\users.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:73855547d2a1e7fcc7-85590323%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2f8186f98073bd128e0b9c9d2d86db9792f63954' => 
     array (
       0 => 'templates\\users.tpl',
-      1 => 1430426208,
+      1 => 1430944437,
       2 => 'file',
     ),
     'd024ab6e9f1546a956d8b3e5784904d86d5a99b0' => 
@@ -21,6 +21,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_5547d2a1f41489_44783775',
   'variables' => 
   array (
     'menu' => 0,
@@ -29,8 +31,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'site' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5547d2a1f41489_44783775',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5547d2a1f41489_44783775')) {function content_5547d2a1f41489_44783775($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
@@ -171,6 +171,8 @@ $_smarty_tpl->tpl_vars['page']->_loop = true;
 		<?php }?>
 		
 		
+	<?php echo $_smarty_tpl->tpl_vars['site']->value->action;?>
+
 	<div class="panel panel-default">
 	  <!-- Default panel contents -->
 	  <div class="panel-heading"><h3>Gebruikersbeheer</h3></div>
@@ -228,7 +230,7 @@ $_smarty_tpl->tpl_vars['user']->_loop = true;
     					<h4 class="modal-title" id="myModalLabel">Gebruiker details</h4>
   					</div>
       				<div class="modal-body">
-						<form name="detailsform" id="detailsform" role="form" action=""  method="post">
+						<form name="detailsform" id="detailsform" role="form" action="" method="post">
 				
 				      	</form>
       				</div>

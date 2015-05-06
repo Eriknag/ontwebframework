@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-04 22:13:30
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-06 22:04:31
          compiled from "templates\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:170925547d2ea83e179-10064232%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '180e6dc3c90bfb3f9d482c770aa9c1f8f355e653' => 
     array (
       0 => 'templates\\index.tpl',
-      1 => 1430768281,
+      1 => 1430942659,
       2 => 'file',
     ),
     'd024ab6e9f1546a956d8b3e5784904d86d5a99b0' => 
@@ -21,6 +21,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_5547d2ea8e2d03_91725399',
   'variables' => 
   array (
     'menu' => 0,
@@ -29,8 +31,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'site' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5547d2ea8e2d03_91725399',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5547d2ea8e2d03_91725399')) {function content_5547d2ea8e2d03_91725399($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
@@ -174,7 +174,9 @@ $_smarty_tpl->tpl_vars['page']->_loop = true;
 	<?php if ($_smarty_tpl->tpl_vars['site']->value->hasErrors()) {?>
 	<?php }?>
 	<?php if ($_smarty_tpl->tpl_vars['site']->value->isLoggedIn()) {?>
-		<h1>Welkom <?php echo $_smarty_tpl->tpl_vars['site']->value->account->getCurrentUserFullName();?>
+		<h1>Welkom <?php echo $_smarty_tpl->tpl_vars['site']->value->account->getCurrentUser()->firstname;?>
+ <?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['site']->value->account->getCurrentUser()->lastname;?>
+<?php $_tmp1=ob_get_clean();?><?php echo $_tmp1;?>
 </h1>
 	<?php } else { ?>
 		<h1>Welkom</h1>
